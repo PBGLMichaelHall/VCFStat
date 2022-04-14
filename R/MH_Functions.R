@@ -310,12 +310,11 @@ ChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
 #' @param vcf A vcf file please
 #' @param chromlist A vector specifying particular chromosomes
 #' @param windowSize Specify window size to calculate number of SNPs
-#' @param binwidth Specify bindwidth for histogram plot
-#' @return A histogram of of Depth FIELD
-#' @examples FacetChromnSNPs(vcf = "General.vcf", chromlist = c("Chr01","Chr02"),windowsize=1e+05,binwidth=10)
+#' @param ncol An integer representing the number of Chromosomes in your set list
+#' @examples FacetChromnSNPs(vcf = "General.vcf", chromlist = c("Chr01","Chr02"),windowsize=1e+05,ncol=2)
 #' @export FacetChromnSNPs
 
-FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
+FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   vcf <- read.vcfR(file = vcf)
   vcf <- vcfR2tidy(vcf)
   SNPset <- vcf
@@ -333,6 +332,7 @@ FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   message("Selecting Variable Subset")
   SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
+  SNPset$nSNPs <- as.numeric(SNPset$nSNPs)
   jpeg(file="plot9.jpeg")
   ggplot(data = SNPset, aes(x = nSNPs)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   dev.off()
