@@ -414,7 +414,7 @@ FacetChromDP <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
 }
 
 #' @title FacetChromAO
-#' @param vcf A vcf file please
+#' @param vcf A vcf file please please
 #' @param chromlist A vector specifying particular chromosomes
 #' @param windowSize Specify window size to calculate number of SNPs
 #' @param ncol An integer representing the number of Chromosomes in your set list
@@ -443,7 +443,7 @@ FacetChromAO <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   jpeg(file="plot9.jpeg")
   ggplot(data = SNPset, aes(x = AO)) + geom_histogram(show.legend = TRUE, stat="count") + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   dev.off()
-  z<-  ggplot(data = SNPset, aes(x = AO)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  z<-  ggplot(data = SNPset, aes(x = AO)) + geom_histogram(show.legend = TRUE, stat="count") + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   print(z)
   
 }
