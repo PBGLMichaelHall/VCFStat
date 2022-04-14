@@ -4,7 +4,7 @@
 #' @param windowSize Specify window size to calculate number of SNPs
 #' @param binwidth Specify bindwidth for histogram plot
 #' @return A histogram of of Quality FIELD
-#' @examples ChromQuality(vcf = "General.vcf", chromlist = c("Chr01","Chr02"),windowsize=1e+05,binwidth=10)
+#' @examples ChromQual(vcf = "General.vcf", chromlist = c("Chr01","Chr02"),windowsize=1e+05,binwidth=10)
 #' @export ChromQual
 
 ChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
@@ -35,14 +35,14 @@ z <- hist(x = SNPset$QUAL, breaks = breaks, col = "green", xlab = "Quality Quant
 print(z)
 }
 
-#' @title ChromQual
+#' @title ChromDP
 #' @param vcf A vcf file 
 #' @param chromlist A vector specifying particular chromosomes
 #' @param windowSize Specify window size to calculate number of SNPs
 #' @param binwidth Specify bindwidth for histogram plot
 #' @return A histogram of of Depth FIELD
-#' @examples ChromQuality(vcf = "General.vcf", chromlist = c("Chr01","Chr02"),windowsize=1e+05,binwidth=10)
-#' @export ChromQual
+#' @examples ChromDP(vcf = "General.vcf", chromlist = c("Chr01","Chr02"),windowsize=1e+05,binwidth=10)
+#' @export ChromDP
 
 ChromDP <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   vcf <- read.vcfR(file = "freebayes_D2.filtered.vcf.gz")
@@ -74,14 +74,14 @@ ChromDP <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
 
 
 
-#' @title ChromQual
+#' @title ChromRO
 #' @param vcf A vcf file 
 #' @param chromlist A vector specifying particular chromosomes
 #' @param windowSize Specify window size to calculate number of SNPs
 #' @param binwidth Specify bindwidth for histogram plot
 #' @return A histogram of of Depth FIELD
-#' @examples ChromQuality(vcf = "General.vcf", chromlist = c("Chr01","Chr02"),windowsize=1e+05,binwidth=10)
-#' @export ChromQual
+#' @examples ChromRO(vcf = "General.vcf", chromlist = c("Chr01","Chr02"),windowsize=1e+05,binwidth=10)
+#' @export ChromRO
 
 ChromRO <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   vcf <- read.vcfR(file = "freebayes_D2.filtered.vcf.gz")
@@ -112,16 +112,16 @@ ChromRO <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
 }
 
 
-#' @title ChromQual
+#' @title ChromMQM
 #' @param vcf A vcf file 
 #' @param chromlist A vector specifying particular chromosomes
 #' @param windowSize Specify window size to calculate number of SNPs
 #' @param binwidth Specify bindwidth for histogram plot
 #' @return A histogram of of Depth FIELD
-#' @examples ChromQuality(vcf = "General.vcf", chromlist = c("Chr01","Chr02"),windowsize=1e+05,binwidth=10)
-#' @export ChromQual
+#' @examples ChromMQM(vcf = "General.vcf", chromlist = c("Chr01","Chr02"),windowsize=1e+05,binwidth=10)
+#' @export ChromMQM
 
-ChromRO <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
+ChromMQM <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   vcf <- read.vcfR(file = "freebayes_D2.filtered.vcf.gz")
   vcf <- vcfR2tidy(vcf)
   SNPset <- vcf
