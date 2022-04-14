@@ -218,13 +218,16 @@ ChromAC <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   message("Making breaks Width")
-  SNPset$AC <- as.numeric(SNPset$AC)
-  breaks <- seq(round(min(SNPset$AC) - 1, 0), round(max(SNPset$AC) + 100, 0), binwidth)
+  SNPset$AC <- as.factor(SNPset$AC)
   jpeg(file="plot4.jpeg")
   message("Plotting histogram")
-  hist(x = SNPset$AC, breaks = breaks, col = "green", xlab = "AC Quantities", main = "Histogram of AC Quantities")
+  plot(SNPset$AC)
   dev.off()
-  z <- hist(x = SNPset$AC, breaks = breaks, col = "green", xlab ="AC Quantities", main ="Histogram of AC Quantities")
+  totals <- table(SNPset$AC)
+  print(totals)
+  z <- plot(SNPset$AC)
+  print(z)
+
   print(z)
 }
 
