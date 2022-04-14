@@ -32,7 +32,7 @@ jpeg(file="plot1.jpeg")
 message("Plotting histogram")
 hist(x = SNPset$QUAL, breaks = "sturges", col = "green", xlab ="Quality Quantities", main = "histogram of Quality Quantities")
      dev.off()
-z <- hist(x = SNPset$QUAL, breaks = breaks, col = "green", xlab = "Quality Quantities", main ="histogram of Quality Quantities")
+z <- hist(x = SNPset$QUAL, breaks = "sturges", col = "green", xlab = "Quality Quantities", main ="histogram of Quality Quantities")
 print(z)
 }
 
