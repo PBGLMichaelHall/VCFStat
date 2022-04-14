@@ -336,6 +336,8 @@ FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   jpeg(file="plot9.jpeg")
   ggplot(data = SNPset, aes(x = nSNPs)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   dev.off()
+  z<-  ggplot(data = SNPset, aes(x = nSNPs)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  print(z)
   
 }
 
