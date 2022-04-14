@@ -29,6 +29,6 @@ par(mfrow = c(1, 1))
 
 breaks <- seq(round(min(SNPset$QUAL) - 1, 0), round(max(SNPset$QUAL) + 100, 0), binwidth)
 jpeg(file="plot1.jpeg")
-hist(x = SNPset$QUAL, breaks = breaks, col = "green", frequency = TRUE, xlab = paste0(FIELD,"Quantities"), main = paste0("Histogram of",FIELD))
+hist(x = SNPset$QUAL, breaks = breaks, col = "green", xlab = paste0(FIELD,"Quantities"), main = paste0("Histogram of",FIELD))
      dev.off()
 }
