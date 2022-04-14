@@ -228,7 +228,6 @@ ChromAC <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   z <- plot(SNPset$AC)
   print(z)
 
-  print(z)
 }
 
 
