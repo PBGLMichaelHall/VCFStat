@@ -199,7 +199,7 @@ ChromMQM <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
 #' @examples ChromAC(vcf = "General.vcf", chromlist = c("Chr01","Chr02"),windowsize=1e+05,binwidth=10)
 #' @export ChromAC
 
-ChromMQM <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
+ChromAC <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   vcf <- read.vcfR(file = "freebayes_D2.filtered.vcf.gz")
   vcf <- vcfR2tidy(vcf)
   SNPset <- vcf
