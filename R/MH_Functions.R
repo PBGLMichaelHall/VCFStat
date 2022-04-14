@@ -312,7 +312,7 @@ ChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
 #' @param windowSize Specify window size to calculate number of SNPs
 #' @param binwidth Specify bindwidth for histogram plot
 #' @return A histogram of of Depth FIELD
-#' @examples nSNPs(vcf = "General.vcf", chromlist = c("Chr01","Chr02"),windowsize=1e+05,binwidth=10)
+#' @examples FacetChromnSNPs(vcf = "General.vcf", chromlist = c("Chr01","Chr02"),windowsize=1e+05,binwidth=10)
 #' @export FacetChromnSNPs
 
 FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
