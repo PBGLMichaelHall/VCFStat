@@ -369,7 +369,7 @@ FacetChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   message("Selecting Variable Subset")
   SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
-  jpeg(file="plot9.jpeg")
+  jpeg(file="plot10.jpeg")
   ggplot(data = SNPset, aes(x = QUAL)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   dev.off()
   z<-  ggplot(data = SNPset, aes(x = QUAL)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
@@ -405,7 +405,7 @@ FacetChromDP <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   SNPset$DP <- as.numeric(SNPset$DP)
-  jpeg(file="plot9.jpeg")
+  jpeg(file="plot11.jpeg")
   ggplot(data = SNPset, aes(x = DP)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   dev.off()
   z<-  ggplot(data = SNPset, aes(x = DP)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
@@ -443,8 +443,13 @@ FacetChromAO <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   jpeg(file="plot9.jpeg")
   ggplot(data = SNPset, aes(x = AO)) + geom_density() + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   dev.off()
+  jpeg(file="plot12.jpeg")
+  ggplot(data = SNPset, aes(x = AO)) + geom_histogram(stat="count") + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  dev.off()
   z<-  ggplot(data = SNPset, aes(x = AO)) + geom_density() + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   print(z)
+  z1<-ggplot(data = SNPset, aes(x = AO)) + geom_histogram(stat="count") + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  print(z1)
   
 }
 
