@@ -8,7 +8,7 @@
 #' @export ChromQual
 
 ChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
-vcf <- read.vcfR(file = "freebayes_D2.filtered.vcf.gz")
+vcf <- read.vcfR(file = vcf)
 vcf <- vcfR2tidy(vcf)
 SNPset <- vcf
 SNPset <- Map(as.data.frame, SNPset)
@@ -45,7 +45,7 @@ print(z)
 #' @export ChromDP
 
 ChromDP <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
-  vcf <- read.vcfR(file = "freebayes_D2.filtered.vcf.gz")
+  vcf <- read.vcfR(file = vcf)
   vcf <- vcfR2tidy(vcf)
   SNPset <- vcf
   SNPset <- Map(as.data.frame, SNPset)
@@ -84,7 +84,7 @@ ChromDP <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
 #' @export ChromRO
 
 ChromRO <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
-  vcf <- read.vcfR(file = "freebayes_D2.filtered.vcf.gz")
+  vcf <- read.vcfR(file = vcf)
   vcf <- vcfR2tidy(vcf)
   SNPset <- vcf
   SNPset <- Map(as.data.frame, SNPset)
@@ -122,7 +122,7 @@ ChromRO <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
 #' @export ChromAO
 
 ChromAO <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
-  vcf <- read.vcfR(file = "freebayes_D2.filtered.vcf.gz")
+  vcf <- read.vcfR(file = vcf)
   vcf <- vcfR2tidy(vcf)
   SNPset <- vcf
   SNPset <- Map(as.data.frame, SNPset)
@@ -161,7 +161,7 @@ ChromAO <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
 #' @export ChromMQM
 
 ChromMQM <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
-  vcf <- read.vcfR(file = "freebayes_D2.filtered.vcf.gz")
+  vcf <- read.vcfR(file = vcf)
   vcf <- vcfR2tidy(vcf)
   SNPset <- vcf
   SNPset <- Map(as.data.frame, SNPset)
@@ -200,7 +200,7 @@ ChromMQM <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
 #' @export ChromAC
 
 ChromAC <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
-  vcf <- read.vcfR(file = "freebayes_D2.filtered.vcf.gz")
+  vcf <- read.vcfR(file = vcf)
   vcf <- vcfR2tidy(vcf)
   SNPset <- vcf
   SNPset <- Map(as.data.frame, SNPset)
@@ -240,7 +240,7 @@ ChromAC <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
 #' @export ChromAN
 
 ChromAN <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
-  vcf <- read.vcfR(file = "freebayes_D2.filtered.vcf.gz")
+  vcf <- read.vcfR(file = vcf)
   vcf <- vcfR2tidy(vcf)
   SNPset <- vcf
   SNPset <- Map(as.data.frame, SNPset)
