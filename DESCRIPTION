@@ -1,0 +1,35 @@
+Package: VCFstat
+Type: Package
+Title: VCFStat
+Version: 0.10.1
+Date: 14-04-2022
+Authors@R: c(
+    person("Michael Hall", "Mansfeld", email = "mansfeld@msu.edu", role = c("aut", "cre")),
+    person("Rebecca", "Grumet", email = "grumet@msu.edu", role = c("ths"))
+    )
+BugReports: https://github.com/PBGLMichaelHall/VCFStat/issues
+Description: N/A
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports:
+    modeest (>= 2.3.2),
+    ggplot2 (>= 2.2.0),
+    gtools,
+    dplyr,
+    readr,
+    tidyr,
+    Rcpp,
+    locfit,
+    vcfR,
+    data.table,
+    QTLseqr
+Suggests:
+    knitr,
+    rmarkdown,
+    kableExtra,
+    Yang2013data
+RoxygenNote: 7.1.2
+biocViews: Software, Sequencing, Visualization
+VignetteBuilder: knitr
+LinkingTo: Rcpp
