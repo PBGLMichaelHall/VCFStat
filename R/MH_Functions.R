@@ -26,9 +26,12 @@ SNPset$CHROM <- factor(SNPset$CHROM, levels = gtools::mixedsort(unique(SNPset$CH
 message("Selecting Variable Subset")
 SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
 par(mfrow = c(1, 1))
-
+message("Making breaks Width")
 breaks <- seq(round(min(SNPset$QUAL) - 1, 0), round(max(SNPset$QUAL) + 100, 0), binwidth)
 jpeg(file="plot1.jpeg")
+message("Plotting histogram")
 hist(x = SNPset$QUAL, breaks = breaks, col = "green", xlab = paste0(FIELD,"Quantities"), main = paste0("Histogram of",FIELD))
      dev.off()
+z <- hist(x = SNPset$QUAL, breaks = breaks, col = "green", xlab = paste0(FIELD,"Quantities"), main = paste0("Histogram of",FIELD))
+print(z)
 }
