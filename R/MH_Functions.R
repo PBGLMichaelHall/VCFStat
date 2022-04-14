@@ -64,12 +64,11 @@ ChromDP <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   message("Making breaks Width")
-  breaks <- seq(round(min(SNPset$DP) - 1, 0), round(max(SNPset$DP) + 100, 0), binwidth)
   jpeg(file="plot2.jpeg")
   message("Plotting histogram")
-  hist(x = SNPset$DP, breaks = breaks, col = "green", xlab = "Depth Quantities", main = "histogram of Depth Quantities")
+  hist(x = SNPset$DP, breaks = "sturges", col = "green", xlab = "Depth Quantities", main = "histogram of Depth Quantities")
   dev.off()
-  z <- hist(x = SNPset$DP, breaks = breaks, col = "green", xlab ="Depth Quantities", main ="histogram of Depth Quantities")
+  z <- hist(x = SNPset$DP, breaks = "sturges", col = "green", xlab ="Depth Quantities", main ="histogram of Depth Quantities")
   print(z)
 }
 
@@ -103,12 +102,11 @@ ChromRO <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   message("Making breaks Width")
-  breaks <- seq(round(min(SNPset$RO) - 1, 0), round(max(SNPset$RO) + 100, 0), binwidth)
   jpeg(file="plot3.jpeg")
   message("Plotting histogram")
-  hist(x = SNPset$RO, breaks = breaks, col = "green", xlab = "RO Quantities", main = "histogram of RO Quantities")
+  hist(x = SNPset$RO, breaks = "sturges", col = "green", xlab = "RO Quantities", main = "histogram of RO Quantities")
   dev.off()
-  z <- hist(x = SNPset$RO, breaks = breaks, col = "green", xlab ="RO Quantities", main ="histogram of RO Quantities")
+  z <- hist(x = SNPset$RO, breaks = "sturges", col = "green", xlab ="RO Quantities", main ="histogram of RO Quantities")
   print(z)
 }
 
@@ -142,12 +140,11 @@ ChromAO <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   par(mfrow = c(1, 1))
   message("Making breaks Width")
   SNPset$AO <- as.numeric(SNPset$AO)
-  breaks <- seq(round(min(SNPset$AO) - 1, 0), round(max(SNPset$AO) + 100, 0), binwidth)
   jpeg(file="plot3.jpeg")
   message("Plotting histogram")
-  hist(x = SNPset$AO, breaks = breaks, col = "green", xlab = "AO Quantities", main = "histogram of AO Quantities")
+  hist(x = SNPset$AO, breaks = "sturges", col = "green", xlab = "AO Quantities", main = "histogram of AO Quantities")
   dev.off()
-  z <- hist(x = SNPset$AO, breaks = breaks, col = "green", xlab ="AO Quantities", main ="histogram of AO Quantities")
+  z <- hist(x = SNPset$AO, breaks = "sturges", col = "green", xlab ="AO Quantities", main ="histogram of AO Quantities")
   print(z)
 }
 
@@ -181,12 +178,11 @@ ChromMQM <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   par(mfrow = c(1, 1))
   message("Making breaks Width")
   SNPset$MQM <- as.numeric(SNPset$MQM)
-  breaks <- seq(round(min(SNPset$MQM) - 1, 0), round(max(SNPset$MQM) + 100, 0), binwidth)
   jpeg(file="plot4.jpeg")
   message("Plotting histogram")
-  hist(x = SNPset$MQM, breaks = breaks, col = "green", xlab = "MQM Quantities", main = "histogram of MQM Quantities")
+  hist(x = SNPset$MQM, breaks = "sturges", col = "green", xlab = "MQM Quantities", main = "histogram of MQM Quantities")
   dev.off()
-  z <- hist(x = SNPset$MQM, breaks = breaks, col = "green", xlab ="MQM Quantities", main ="histogram of MQM Quantities")
+  z <- hist(x = SNPset$MQM, breaks = "sturges", col = "green", xlab ="MQM Quantities", main ="histogram of MQM Quantities")
   print(z)
 }
 
