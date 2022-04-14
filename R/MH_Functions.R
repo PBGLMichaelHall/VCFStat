@@ -441,7 +441,7 @@ FacetChromAO <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   par(mfrow = c(1, 1))
   SNPset$DP <- as.numeric(SNPset$AO)
   jpeg(file="plot9.jpeg")
-  ggplot(data = SNPset, aes(x = AO)) + geom_histogram(bins = 10, show.legend = TRUE,stat="count") + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  ggplot(data = SNPset, aes(x = AO)) + geom_histogram(show.legend = TRUE, stat="count") + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   dev.off()
   z<-  ggplot(data = SNPset, aes(x = AO)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   print(z)
