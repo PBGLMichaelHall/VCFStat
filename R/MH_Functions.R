@@ -3,11 +3,12 @@
 #' @param chromlist A vector specifying particular chromosomes
 #' @param windowSize Specify window size to calculate number of SNPs
 #' @param binwidth Specify bindwidth for histogram plot
+#' @param Maximum Specify Upper X limit
 #' @return A histogram of of Quality FIELD
 #' @examples ChromQual(vcf = "General.vcf", chromlist = c("Chr01","Chr02"),windowsize=1e+05,binwidth=10)
 #' @export ChromQual
 
-ChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
+ChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL,Maximum=NULL){
 vcf <- read.vcfR(file = vcf)
 vcf <- vcfR2tidy(vcf)
 SNPset <- vcf
@@ -26,7 +27,7 @@ message("Selecting Variable Subset")
 SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
 par(mfrow = c(1, 1))
 message("Making breaks Width")
-breaks <- seq(round(min(SNPset$QUAL) - 1, 0), round(max(SNPset$QUAL) + 100, 0), binwidth)
+breaks <- seq(0,Maximum,binwidth)
 jpeg(file="plot1.jpeg")
 message("Plotting histogram")
 hist(x = SNPset$QUAL, breaks = breaks, col = "green", xlab ="Quality Quantities", main = "Histogram of Quality Quantities")
