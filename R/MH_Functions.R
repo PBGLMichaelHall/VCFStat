@@ -268,7 +268,7 @@ ChromAN <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
 }
 
 #' @title ChromnSNPs
-#' @param vcf A vcf file 
+#' @param vcf A vcf file please
 #' @param chromlist A vector specifying particular chromosomes
 #' @param windowSize Specify window size to calculate number of SNPs
 #' @param binwidth Specify bindwidth for histogram plot
