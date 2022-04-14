@@ -140,7 +140,7 @@ ChromAO <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   par(mfrow = c(1, 1))
   message("Making breaks Width")
   SNPset$AO <- as.numeric(SNPset$AO)
-  jpeg(file="plot3.jpeg")
+  jpeg(file="plot4.jpeg")
   message("Plotting histogram")
   hist(x = SNPset$AO, breaks = "sturges", col = "green", xlab = "AO Quantities", main = "histogram of AO Quantities")
   dev.off()
@@ -178,7 +178,7 @@ ChromMQM <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   par(mfrow = c(1, 1))
   message("Making breaks Width")
   SNPset$MQM <- as.numeric(SNPset$MQM)
-  jpeg(file="plot4.jpeg")
+  jpeg(file="plot5.jpeg")
   message("Plotting histogram")
   hist(x = SNPset$MQM, breaks = "sturges", col = "green", xlab = "MQM Quantities", main = "histogram of MQM Quantities")
   dev.off()
@@ -216,7 +216,7 @@ ChromAC <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   par(mfrow = c(1, 1))
   message("Making breaks Width")
   SNPset$AC <- as.factor(SNPset$AC)
-  jpeg(file="plot4.jpeg")
+  jpeg(file="plot6.jpeg")
   message("Plotting barplot of AC")
   plot(SNPset$AC)
   dev.off()
@@ -256,7 +256,7 @@ ChromAN <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   par(mfrow = c(1, 1))
   message("Making breaks Width")
   SNPset$AC <- as.factor(SNPset$AN)
-  jpeg(file="plot4.jpeg")
+  jpeg(file="plot7.jpeg")
   message("Plotting barplot of AN")
   plot(SNPset$AC)
   dev.off()
@@ -295,7 +295,7 @@ ChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   message("Making breaks Width")
-  jpeg(file="plot3.jpeg")
+  jpeg(file="plot8.jpeg")
   message("Plotting histogram")
   hist(x = SNPset$nSNPs, breaks = "sturges", col = "green", xlab = "nSNPs Quantities", main = "histogram of nSNPs Quantities")
   dev.off()
@@ -304,4 +304,38 @@ ChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   
 }
 
+
+
+#' @title FacetChromnSNPs
+#' @param vcf A vcf file please
+#' @param chromlist A vector specifying particular chromosomes
+#' @param windowSize Specify window size to calculate number of SNPs
+#' @param binwidth Specify bindwidth for histogram plot
+#' @return A histogram of of Depth FIELD
+#' @examples nSNPs(vcf = "General.vcf", chromlist = c("Chr01","Chr02"),windowsize=1e+05,binwidth=10)
+#' @export FacetChromnSNPs
+
+FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
+  vcf <- read.vcfR(file = vcf)
+  vcf <- vcfR2tidy(vcf)
+  SNPset <- vcf
+  SNPset <- Map(as.data.frame, SNPset)
+  SNPset <- rbindlist(SNPset, fill = TRUE)
+  if (!is.null(chromlist)) {
+    message("Preparing Data for Quality Control Plotting and removing the following Chromosomes/Contigs: ", 
+            paste(unique(SNPset$CHROM)[!unique(SNPset$CHROM) %in% 
+                                         chromlist], collapse = ", "))
+    SNPset <- SNPset[SNPset$CHROM %in% chromlist, ]
+    message("Finishing Chromosome Subset")
+  }
+  message("Factoring Chromosome Variable According to Unique Specification")
+  SNPset$CHROM <- factor(SNPset$CHROM, levels = gtools::mixedsort(unique(SNPset$CHROM)))
+  message("Selecting Variable Subset")
+  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
+  par(mfrow = c(1, 1))
+  jpeg(file="plot9.jpeg")
+  ggplot(data = SNPset, aes(x = nSNPs)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  dev.off()
+  
+}
 
