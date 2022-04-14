@@ -413,4 +413,38 @@ FacetChromDP <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   
 }
 
+#' @title FacetChromAO
+#' @param vcf A vcf file please
+#' @param chromlist A vector specifying particular chromosomes
+#' @param windowSize Specify window size to calculate number of SNPs
+#' @param ncol An integer representing the number of Chromosomes in your set list
+#' @examples FacetChromAO(vcf = "General.vcf", chromlist = c("Chr01","Chr02"),windowsize=1e+05,ncol=2)
+#' @export FacetChromAO
+
+FacetChromAO <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
+  vcf <- read.vcfR(file = vcf)
+  vcf <- vcfR2tidy(vcf)
+  SNPset <- vcf
+  SNPset <- Map(as.data.frame, SNPset)
+  SNPset <- rbindlist(SNPset, fill = TRUE)
+  if (!is.null(chromlist)) {
+    message("Preparing Data for Quality Control Plotting and removing the following Chromosomes/Contigs: ", 
+            paste(unique(SNPset$CHROM)[!unique(SNPset$CHROM) %in% 
+                                         chromlist], collapse = ", "))
+    SNPset <- SNPset[SNPset$CHROM %in% chromlist, ]
+    message("Finishing Chromosome Subset")
+  }
+  message("Factoring Chromosome Variable According to Unique Specification")
+  SNPset$CHROM <- factor(SNPset$CHROM, levels = gtools::mixedsort(unique(SNPset$CHROM)))
+  message("Selecting Variable Subset")
+  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
+  par(mfrow = c(1, 1))
+  SNPset$DP <- as.numeric(SNPset$AO)
+  jpeg(file="plot9.jpeg")
+  ggplot(data = SNPset, aes(x = AO)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  dev.off()
+  z<-  ggplot(data = SNPset, aes(x = AO)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  print(z)
+  
+}
 
