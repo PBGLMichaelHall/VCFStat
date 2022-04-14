@@ -141,7 +141,7 @@ ChromMQM <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   par(mfrow = c(1, 1))
   message("Making breaks Width")
   SNPset$MQM <- as.numeric(SNPset$MQM)
-  breaks <- seq(0, 15, binwidth)
+  breaks <- seq(round(min(SNPset$MQM) - 1, 0), round(max(SNPset$MQM) + 100, 0), binwidth)
   jpeg(file="plot4.jpeg")
   message("Plotting histogram")
   hist(x = SNPset$MQM, breaks = breaks, col = "green", xlab = "MQM Quantities", main = "Histogram of MQM Quantities")
