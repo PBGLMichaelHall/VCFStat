@@ -140,7 +140,7 @@ ChromMQM <- function(vcf, chromlist=NULL,windowSize=NULL,binwidth=NULL){
   SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   message("Making breaks Width")
-  breaks <- seq(0, round(max(SNPset$MQM) + 100, 0), binwidth)
+  breaks <- seq(0, 15, binwidth)
   jpeg(file="plot1.jpeg")
   message("Plotting histogram")
   hist(x = SNPset$MQM, breaks = breaks, col = "green", xlab = "MQM Quantities", main = "Histogram of MQM Quantities")
