@@ -27,7 +27,7 @@ message("Selecting Variable Subset")
 SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
 par(mfrow = c(1, 1))
 message("Making breaks Width")
-breaks <- seq(0,Maximum,binwidth)
+
 jpeg(file="plot1.jpeg")
 message("Plotting histogram")
 hist(x = SNPset$QUAL, breaks = "sturges", col = "green", xlab ="Quality Quantities", main = "histogram of Quality Quantities")
