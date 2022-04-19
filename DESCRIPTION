@@ -1,11 +1,10 @@
 Package: VCFstat
 Type: Package
 Title: VCFStat
-Version: 0.10.1
+Version: 0.1.0
 Date: 14-04-2022
 Authors@R: c(
-    person("Michael Hall", "Mansfeld", email = "mansfeld@msu.edu", role = c("aut", "cre")),
-    person("Rebecca", "Grumet", email = "grumet@msu.edu", role = c("ths"))
+    person("Michael Hall", "Mansfeld", email = "michaelhall", role = c("aut", "cre")),
     )
 BugReports: https://github.com/PBGLMichaelHall/VCFStat/issues
 Description: N/A
