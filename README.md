@@ -1,5 +1,5 @@
 # VCFStat is a package I made to analyze info fields in a VCF files
-
+# Please refer to Read the Docs Website 
 ---
 title: "VCFstat"
 author: "Michael Hall"
