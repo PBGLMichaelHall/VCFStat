@@ -34,47 +34,10 @@ Installation
 
 You can install VCFstat from github with:
 
-.. code:: r
-
-   # install devtools first to download packages from github
-   install.packages("devtools")
-
-   # use devtools to install QTLseqr
-   devtools::install_github("PBGLMichaelHall/QTLseqr")
-
 **Note:** QTLseqr is a dependent package so
-
-**If you use QTLseqr in published research, please cite:**
-
-   Mansfeld B.N. and Grumet R, QTLseqr: An R package for bulk segregant
-   analysis with next-generation sequencing *The Plant Genome*
-   `doi:10.3835/plantgenome2018.01.0006 <https://dl.sciencesocieties.org/publications/tpg/abstracts/11/2/180006>`__
-
-We also recommend citing the paper for the corresponding method you work
-with.
-
-QTL-seq method:
-
-   Takagi, H., Abe, A., Yoshida, K., Kosugi, S., Natsume, S., Mitsuoka,
-   C., Uemura, A., Utsushi, H., Tamiru, M., Takuno, S., Innan, H., Cano,
-   L. M., Kamoun, S. and Terauchi, R. (2013), QTL-seq: rapid mapping of
-   quantitative trait loci in rice by whole genome resequencing of DNA
-   from two bulked populations. *Plant J*, 74: 174–183.
-   `doi:10.1111/tpj.12105 <https://onlinelibrary.wiley.com/doi/full/10.1111/tpj.12105>`__
-
-G prime method:
-
-   Magwene PM, Willis JH, Kelly JK (2011) The Statistics of Bulk
-   Segregant Analysis Using Next Generation Sequencing. *PLOS
-   Computational Biology* 7(11): e1002255.
-   `doi.org/10.1371/journal.pcbi.1002255 <http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002255>`__
-
-Abstract
---------
 
 Examples:
 =========
-
 Load/install libraries
 ======================
 
