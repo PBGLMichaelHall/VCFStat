@@ -15,7 +15,7 @@ VCFstat Package
 :Date:   4/19/2022
 
 VCFstat Package in R
-==========
+====================
 
 VCFstat is an R package for Downstream analysis of VCF files.
 
@@ -42,93 +42,138 @@ Load/install libraries
 ======================
 
 .. code:: r 
-   
-   install.packages(“tinytex”) 
-   install.packages(“vcfR”) 
-   install.packages(“tidyr”) 
-   install.packages(“ggplot2”)
-   devtools::install_github(“PBGLMichaelHall/QTLseqr”,force = TRUE)
-   devtools::install_github("PBGLMichaelHall/VCFstat",force = TRUE)   
-   library(QTLseqr) 
-   library(VCFstat)
-   library(tinytex) 
-   library(vcfR) 
-   library(tidyr)
-   library(ggplot2)
 
+   devtools::install_github("PBGLMichaelHall/VCFstat",force = TRUE)   
+   library(VCFstat)
+   
+   # Check to see if all dependent packages are loaded.
+   sessionInfo()
 ::
 
-   # Set the Working Directory to where VCF file is stored in computer file system
+Example 1 Rice
+==============
 
+Set the Working Directory 
+-------------------------
 .. code:: r
 
    setwd("/home/michael/Desktop/QTLseqr/extdata/")
+::
+   
+Define Chromomsome List object vector
+-------------------------------------
+
+.. code:: r
+
    chromlist <- c("Chr01","Chr02","Chr03","Chr04","Chr05","Chr06","Chr07","Chr08","Chr09","Chr10")
+::
 
+Functions
+=========
+   
+ChromQual
+---------
 
-   VCFstat::ChromQual(vcf = "freebayes_D2.filtered.vcf.gz", chromlist = chromlist,windowSize = 1e+05, binwidth = 50,Maximum=5000)
+.. code:: r
+
+   VCFstat::ChromQual(vcf = "freebayes_D2.filtered.vcf.gz", chromlist = chromlist,windowSize = 1e+05)
 
 .. figure:: ../images/1.png
    :alt: 
+::
+
+ChromDP
+-------
 
 .. code:: r
+   
 
-   VCFstat::ChromDP(vcf = "freebayes_D2.filtered.vcf.gz", chromlist = chromlist,windowSize = 1e+05, binwidth = 10)
+
+   VCFstat::ChromDP(vcf = "freebayes_D2.filtered.vcf.gz", chromlist = chromlist,windowSize = 1e+05)
 
 .. figure:: ../images/2.png
+::
 
-  
+ChromRO
+------- 
 
 .. code:: r
 
+
+
+   VCFstat::ChromRO(vcf = "freebayes_D2.filtered.vcf.gz", chromlist = chromlist,windowSize = 1e+05)
    
-   VCFstat::ChromRO(vcf = "freebayes_D2.filtered.vcf.gz", chromlist = chromlist,windowSize = 1e+05, binwidth = 10)
 .. figure:: ../images/3.png
-   :alt: 
+   :alt:
+::
 
+ChromAO
+-------
 
 .. code:: r
 
-   VCFstat::ChromAO(vcf = "freebayes_D2.filtered.vcf.gz", chromlist = chromlist,windowSize = 1e+05, binwidth = 10)
+   VCFstat::ChromAO(vcf = "freebayes_D2.filtered.vcf.gz", chromlist = chromlist,windowSize = 1e+05)
 
 .. figure:: ../images/4.png
+::
+
+ChromMQM
+--------
 
 
 .. code:: r
 
-   VCFstat::ChromAO(vcf = "freebayes_D2.filtered.vcf.gz", chromlist = chromlist,windowSize = 1e+05, binwidth = 10)
+   VCFstat::ChromMQM(vcf = "freebayes_D2.filtered.vcf.gz", chromlist = chromlist,windowSize = 1e+05)
 
 .. figure:: ../images/5.png
+::
 
+ChromAC
+-------
 
 .. code:: r
 
-   VCFstat::ChromAC(vcf = "freebayes_D2.filtered.vcf.gz", chromlist = chromlist,windowSize = 1e+05, binwidth = 10)
+   VCFstat::ChromAC(vcf = "freebayes_D2.filtered.vcf.gz", chromlist = chromlist,windowSize = 1e+05)
 
 .. figure:: ../images/6.png
    :alt: 
+::
+
+ChromAN
+-------
+
 
 .. code:: r
 
-   VCFstat::ChromAN(vcf = "freebayes_D2.filtered.vcf.gz", chromlist = chromlist,windowSize = 1e+05, binwidth = 10)
+   VCFstat::ChromAN(vcf = "freebayes_D2.filtered.vcf.gz", chromlist = chromlist,windowSize = 1e+05)
 
 .. figure:: ../images/7.png
    :alt: 
+::
 
+ChromnSNPs
+----------
 
 .. code:: r
 
-   VCFstat::ChromnSNPs(vcf = "freebayes_D2.filtered.vcf.gz", chromlist = chromlist,windowSize = 1e+05, binwidth = 10)
+   VCFstat::ChromnSNPs(vcf = "freebayes_D2.filtered.vcf.gz", chromlist = chromlist,windowSize = 1e+05)
 
 .. figure:: ../images/8.png
    :alt: 
+::
+
+FacetChromnSNPs
+---------------
 
 .. code:: r
 
    VCFstat::FacetChromnSNPs(vcf = "freebayes_D2.filtered.vcf.gz", chromlist = chromlist,windowSize = 1e+05, ncol=10)
 
 .. figure:: ../images/9.png
-  
+::
+
+FacetChromQual
+--------------
 
 .. code:: r
 
@@ -136,7 +181,10 @@ Load/install libraries
 
 .. figure:: ../images/10.png
    :alt: 
+::
 
+FacetChromDP
+------------
 
 .. code:: r
 
@@ -144,6 +192,10 @@ Load/install libraries
 
 .. figure:: ../images/11.png
    :alt: 
+::
+
+FacetChromAO
+------------
 
 .. code:: r
    
@@ -153,29 +205,54 @@ Load/install libraries
    :alt: 
 
 .. figure:: ../images/13.png
+::
+
+Example 2 Brachypodium
+======================
+
+Set Working Directory
+---------------------
+
 
 .. code:: r
 
    setwd("/home/michael/Desktop/Variants/Decompressed/")
+::
 
-   chromlist <- c("NC_016131.3","NC_016132.3","NC_016133.3","NC_016134.3","NC_016135.3")
-
-
-   VCFstat::ChromQual(vcf = "freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf", chromlist = chromlist,windowSize = 1e+05, binwidth = 50,Maximum=5000)
-
-.. figure:: ../images/14.png
-   :alt:
-
-
+Define Chromosome Vector
+-----------------------
 
 .. code:: r
 
-   VCFstat::ChromDP(vcf = "freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf", chromlist = chromlist,windowSize = 1e+05, binwidth = 10)
+   chromlist <- c("NC_016131.3","NC_016132.3","NC_016133.3","NC_016134.3","NC_016135.3")
+::
+
+Functions
+=========
+
+ChromQual
+---------
+
+.. code:: r
+   VCFstat::ChromQual(vcf = "freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf", chromlist = chromlist,windowSize = 1e+05)
+
+.. figure:: ../images/14.png
+   :alt:
+::
+
+ChromDP
+-------
+
+.. code:: r
+
+   VCFstat::ChromDP(vcf = "freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf", chromlist = chromlist,windowSize = 1e+05)
 
 .. figure:: ../images/15.png
    :alt: 
+::
 
- 
+ChromRO
+-------
 
 .. code:: r
 
@@ -183,7 +260,10 @@ Load/install libraries
 
 .. figure:: ../images/16.png
    :alt: 
+::
 
+ChromAO
+-------
   
 .. code:: r
 
@@ -191,20 +271,32 @@ Load/install libraries
 
 .. figure:: ../images/17.png
    :alt: 
+::
 
- .. code:: r
+ChromMQM
+--------
+
+.. code:: r
 
    VCFstat::ChromMQM(vcf = "freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf", chromlist = chromlist,windowSize = 1e+05, binwidth = 10)
 
 .. figure:: ../images/18.png
    :alt: 
+::
 
-   .. code:: r
+ChromAC
+-------
+
+.. code:: r
 
    VCFstat::ChromAC(vcf = "freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf", chromlist = chromlist,windowSize = 1e+05, binwidth = 10)
 
 .. figure:: ../images/19.png
    :alt:
+::
+
+ChromAN
+-------
 
 .. code:: r
 
@@ -212,6 +304,10 @@ Load/install libraries
 
 .. figure:: ../images/20.png
    :alt: 
+::
+
+ChromnSNPs
+----------
 
 .. code:: r
 
@@ -219,8 +315,10 @@ Load/install libraries
 
 .. figure:: ../images/21.png
    :alt: 
+::
 
- 
+FacetChromnSNPs
+---------------
 
 .. code:: r
 
@@ -228,19 +326,31 @@ Load/install libraries
 
 .. figure:: ../images/22.png
    :alt:
-   
+::
+
+FacetChromQual
+--------------
+
 .. code:: r
 
    VCFstat::FacetChromQual(vcf = "freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf", chromlist = chromlist,windowSize = 1e+05, ncol=10)
 
 .. figure:: ../images/23.png
    :alt: 
+::
+
+FaceChromDP
+-----------
 
 .. code:: r
 
    VCFstat::FacetChromDP(vcf = "freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf", chromlist = chromlist,windowSize = 1e+05, ncol=10)
 .. figure:: ../images/24.png
    :alt: 
+::
+
+FacetChromAO
+------------
 
 .. code:: r
 
@@ -250,6 +360,5 @@ Load/install libraries
    :alt: 
 
 .. figure:: ../images/26.png
-
-
+::
 
