@@ -1,5 +1,5 @@
 # Define global variables otherwise Build check will complain and make a note
-globalVariables(c("MQM2","AO","AO2","CHROM","DP","POS","QUAL","aes","facet_wrap","geom_density","geom_histogram","ggplot","nSNPs","theme_classic","%>%","rbindlist","read.vcfR","vcfR2tidy","countSNPs_cpp"))
+globalVariables(c("MQM","AO","CHROM","DP","POS","QUAL","aes","facet_wrap","geom_density","geom_histogram","ggplot","nSNPs","theme_classic","%>%","rbindlist","read.vcfR","vcfR2tidy","countSNPs_cpp"))
 
 #' @importFrom dplyr %>% 
 #' @import graphics
@@ -140,12 +140,12 @@ ChromAO <- function(vcf, chromlist=NULL,windowSize=NULL){
   SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   message("Making breaks Width")
-  SNPset['AO2'] <- as.numeric(SNPset$AO)
+  SNPset$AO <- as.numeric(SNPset$AO)
   jpeg(filename="plot4.jpeg")
   message("Plotting histogram")
-  hist(x = SNPset$AO2, breaks = "sturges", col = "green", xlab = "AO Quantities", main = "histogram of AO Quantities")
+  hist(x = SNPset$AO, breaks = "sturges", col = "green", xlab = "AO Quantities", main = "histogram of AO Quantities")
   dev.off()
-  z <- hist(x = SNPset$AO2, breaks = "sturges", col = "green", xlab ="AO Quantities", main ="histogram of AO Quantities")
+  z <- hist(x = SNPset$AO, breaks = "sturges", col = "green", xlab ="AO Quantities", main ="histogram of AO Quantities")
   print(z)
 }
 
@@ -176,13 +176,12 @@ ChromMQM <- function(vcf, chromlist=NULL,windowSize=NULL){
   SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   message("Making breaks Width")
-  SNPset['MQM2'] <- as.numeric(SNPset$MQM)
-  SNPset <- as.data.frame(SNPset)
+  SNPset$MQM <- as.numeric(SNPset$MQM)
   jpeg(filename="plot5.jpeg")
   message("Plotting histogram")
-  hist(x = SNPset$MQM2, breaks = "sturges", col = "green", xlab = "MQM Quantities", main = "histogram of MQM Quantities")
+  hist(x = SNPset$MQM, breaks = "sturges", col = "green", xlab = "MQM Quantities", main = "histogram of MQM Quantities")
   dev.off()
-  z <- hist(x = SNPset$MQM2, breaks = "sturges", col = "green", xlab ="MQM Quantities", main ="histogram of MQM Quantities")
+  z <- hist(x = SNPset$MQM, breaks = "sturges", col = "green", xlab ="MQM Quantities", main ="histogram of MQM Quantities")
   print(z)
 }
 
@@ -429,16 +428,16 @@ FacetChromAO <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   message("Selecting Variable Subset")
   SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
-  SNPset['A02'] <- as.numeric(SNPset$AO)
+  SNPset$AO <- as.numeric(SNPset$AO)
   jpeg(filename="plot9.jpeg")
-  ggplot(data = SNPset, aes(x = AO2)) + geom_density() + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  ggplot(data = SNPset, aes(x = AO)) + geom_density() + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   dev.off()
   jpeg(filename="plot12.jpeg")
-  ggplot(data = SNPset, aes(x = AO2)) + geom_histogram(stat="count") + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  ggplot(data = SNPset, aes(x = AO)) + geom_histogram(stat="count") + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   dev.off()
-  z<-  ggplot(data = SNPset, aes(x = AO2)) + geom_density() + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  z<-  ggplot(data = SNPset, aes(x = AO)) + geom_density() + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   print(z)
-  z1<-ggplot(data = SNPset, aes(x = AO2)) + geom_histogram(stat="count") + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  z1<-ggplot(data = SNPset, aes(x = AO)) + geom_histogram(stat="count") + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   print(z1)
   
 }
