@@ -3,12 +3,10 @@ Type: Package
 Title: VCFStat
 Version: 0.1.0
 Date: 14-04-2022
-Authors@R: c(
-    person("Michael Hall", "Mansfeld", email = "michaelhall", role = c("aut", "cre")),
-    )
+Authors@R: c(person("Michael Hall", email = "michaelhall532@gmail.com", role = c("aut", "cre")))
 BugReports: https://github.com/PBGLMichaelHall/VCFStat/issues
-Description: N/A
-License: GPL-3
+Description: Provides plots ro the user based on info and format fields.
+License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
@@ -16,19 +14,13 @@ Imports:
     ggplot2 (>= 2.2.0),
     gtools,
     dplyr,
-    readr,
-    tidyr,
-    Rcpp,
-    locfit,
     vcfR,
     data.table,
     QTLseqr
 Suggests:
     knitr,
     rmarkdown,
-    kableExtra,
-    Yang2013data
 RoxygenNote: 7.1.2
 biocViews: Software, Sequencing, Visualization
 VignetteBuilder: knitr
-LinkingTo: Rcpp
+

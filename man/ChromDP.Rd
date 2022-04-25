@@ -2,9 +2,9 @@
 % Please edit documentation in R/MH_Functions.R
 \name{ChromDP}
 \alias{ChromDP}
-\title{ChromQual}
+\title{ChromDP}
 \usage{
-ChromDP(vcf, chromlist = NULL, windowSize = NULL, binwidth = NULL)
+ChromDP(vcf, chromlist = NULL, windowSize = NULL)
 }
 \arguments{
 \item{vcf}{A vcf file}
@@ -12,15 +12,10 @@ ChromDP(vcf, chromlist = NULL, windowSize = NULL, binwidth = NULL)
 \item{chromlist}{A vector specifying particular chromosomes}
 
 \item{windowSize}{Specify window size to calculate number of SNPs}
-
-\item{binwidth}{Specify bindwidth for histogram plot}
 }
 \value{
 A histogram of of Depth FIELD
 }
 \description{
-ChromQual
-}
-\examples{
-ChromQuality(vcf = "General.vcf", chromlist = c("Chr01","Chr02"),windowsize=1e+05,binwidth=10)
+ChromDP
 }
