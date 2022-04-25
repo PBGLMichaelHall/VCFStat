@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to VCFstat Package’s documentation! &mdash; VCFstat Package in R 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> VCFstat Package in R
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Welcome to VCFstat Package’s documentation!</a><ul>
+<li><a class="reference internal" href="#vcfstat-package">VCFstat Package</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vcfstat-package-in-r">VCFstat Package in R</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#examples">Examples:</a></li>
+<li><a class="reference internal" href="#load-install-libraries">Load/install libraries</a></li>
+<li><a class="reference internal" href="#example-1-rice">Example 1 Rice</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#example-2-brachypodium">Example 2 Brachypodium</a></li>
+<li><a class="reference internal" href="#id1">Functions</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">VCFstat Package in R</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>Welcome to VCFstat Package’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-vcfstat-package-s-documentation">
+<h1>Welcome to VCFstat Package’s documentation!</h1>
+<section id="vcfstat-package">
+<h2>VCFstat Package</h2>
+<dl class="field-list simple">
+<dt class="field-odd">Author</dt>
+<dd class="field-odd"><p>Michael Hall</p>
+</dd>
+<dt class="field-even">Date</dt>
+<dd class="field-even"><p>4/19/2022</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="vcfstat-package-in-r">
+<h1>VCFstat Package in R</h1>
+<p>VCFstat is an R package for Downstream analysis of VCF files.</p>
+<p>VCFstat Package is still under development and is offered with out any
+guarantee.</p>
+</section>
+<section id="installation">
+<h1>Installation</h1>
+<p>You can install VCFstat from github with:</p>
+<p><strong>Note:</strong> QTLseqr is a dependent package so</p>
+</section>
+<section id="examples">
+<h1>Examples:</h1>
+</section>
+<section id="load-install-libraries">
+<h1>Load/install libraries</h1>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">devtools</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span><span class="s">&quot;PBGLMichaelHall/VCFstat&quot;</span><span class="p">,</span><span class="n">force</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">VCFstat</span><span class="p">)</span>
+
+<span class="c1"># Check to see if all dependent packages are loaded.</span>
+<span class="nf">sessionInfo</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="example-1-rice">
+<h1>Example 1 Rice</h1>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;/home/michael/Desktop/QTLseqr/extdata/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">chromlist</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Chr01&quot;</span><span class="p">,</span><span class="s">&quot;Chr02&quot;</span><span class="p">,</span><span class="s">&quot;Chr03&quot;</span><span class="p">,</span><span class="s">&quot;Chr04&quot;</span><span class="p">,</span><span class="s">&quot;Chr05&quot;</span><span class="p">,</span><span class="s">&quot;Chr06&quot;</span><span class="p">,</span><span class="s">&quot;Chr07&quot;</span><span class="p">,</span><span class="s">&quot;Chr08&quot;</span><span class="p">,</span><span class="s">&quot;Chr09&quot;</span><span class="p">,</span><span class="s">&quot;Chr10&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="functions">
+<h1>Functions</h1>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">ChromQual</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes_D2.filtered.vcf.gz&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/1.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">ChromDP</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes_D2.filtered.vcf.gz&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="_images/2.png" src="_images/2.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">ChromRO</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes_D2.filtered.vcf.gz&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/3.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">ChromAO</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes_D2.filtered.vcf.gz&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="_images/4.png" src="_images/4.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">ChromMQM</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes_D2.filtered.vcf.gz&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="_images/5.png" src="_images/5.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">ChromAC</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes_D2.filtered.vcf.gz&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/6.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">ChromAN</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes_D2.filtered.vcf.gz&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/7.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">ChromnSNPs</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes_D2.filtered.vcf.gz&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/8.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">FacetChromnSNPs</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes_D2.filtered.vcf.gz&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="_images/9.png" src="_images/9.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">FacetChromQual</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes_D2.filtered.vcf.gz&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/10.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">FacetChromDP</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes_D2.filtered.vcf.gz&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/11.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">FacetChromAO</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes_D2.filtered.vcf.gz&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/12.png" />
+</figure>
+<figure class="align-default">
+<img alt="_images/13.png" src="_images/13.png" />
+</figure>
+</section>
+<section id="example-2-brachypodium">
+<h1>Example 2 Brachypodium</h1>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;/home/michael/Desktop/Variants/Decompressed/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">chromlist</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;NC_016131.3&quot;</span><span class="p">,</span><span class="s">&quot;NC_016132.3&quot;</span><span class="p">,</span><span class="s">&quot;NC_016133.3&quot;</span><span class="p">,</span><span class="s">&quot;NC_016134.3&quot;</span><span class="p">,</span><span class="s">&quot;NC_016135.3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h1>Functions</h1>
+<figure class="align-default">
+<img alt="" src="_images/14.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">ChromDP</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/15.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">ChromRO</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">,</span> <span class="n">binwidth</span> <span class="o">=</span> <span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/16.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">ChromAO</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">,</span> <span class="n">binwidth</span> <span class="o">=</span> <span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/17.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">ChromMQM</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">,</span> <span class="n">binwidth</span> <span class="o">=</span> <span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/18.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">ChromAC</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">,</span> <span class="n">binwidth</span> <span class="o">=</span> <span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/19.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">ChromAN</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">,</span> <span class="n">binwidth</span> <span class="o">=</span> <span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/20.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">ChromnSNPs</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">,</span> <span class="n">binwidth</span> <span class="o">=</span> <span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/21.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">FacetChromnSNPs</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/22.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">FacetChromQual</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/23.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">FacetChromDP</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/24.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VCFstat</span><span class="o">::</span><span class="nf">FacetChromAO</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="s">&quot;freebayes~bwa~GCF_000005505.3_Brachypodium_distachyon_v3.0~all_samples~filtered-strict.vcf&quot;</span><span class="p">,</span> <span class="n">chromlist</span> <span class="o">=</span> <span class="n">chromlist</span><span class="p">,</span><span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e+05</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/25.png" />
+</figure>
+<figure class="align-default">
+<img alt="_images/26.png" src="_images/26.png" />
+</figure>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Michael Hall.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
