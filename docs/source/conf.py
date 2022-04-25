@@ -14,7 +14,7 @@
 import os
 import sys
 import sphinx_rtd_theme
-sys.path.insert(0, os.path.abspath('/home/michael/miniconda3/lib/python3.9/site-packages'))
+#sys.path.insert(0, os.path.abspath('/home/michael/miniconda3/lib/python3.9/site-packages'))
 
 
 
@@ -61,7 +61,7 @@ pygments_style = 'sphinx'
 master_doc = 'index'
 #html_theme = 'alabaster'
 html_theme = 'sphinx_rtd_theme'
-html_add_permalinks = ""
+html_permalinks = ""
 
 html_theme_options = {
   'sticky_navigation': True,

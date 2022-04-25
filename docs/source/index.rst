@@ -6,7 +6,6 @@
 Welcome to VCFstat Package's documentation!
 ===========================================
 
-
 ===============
 VCFstat Package
 ===============
@@ -22,10 +21,19 @@ VCFstat is an R package for Downstream analysis of VCF files.
 VCFstat Package is still under development and is offered with out any
 guarantee.
 
-**For more please read the docs**\ `here <https://github.com/bmansfeld/QTLseqr/raw/master/vignettes/QTLseqr.pdf>`__
----------------------------------------------------------------------------------------------------------------------------------------------
+Build Install and Restart
+=========================
 
+.. code:: r
 
+.. figure:: ../images/R_CMD_INSTALL.png
+
+Build R CMD check results
+=========================
+
+.. code:: r
+
+.. figure:: ../images/R_CMD_Check_Results.png
 
 Installation
 ============
@@ -38,6 +46,7 @@ You can install VCFstat from github with:
 
 Examples:
 =========
+
 Load/install libraries
 ======================
 
@@ -55,17 +64,20 @@ Example 1 Rice
 
 Set the Working Directory 
 -------------------------
+
 .. code:: r
 
    setwd("/home/michael/Desktop/QTLseqr/extdata/")
+   
 ::
    
 Define Chromomsome List object vector
--------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: r
 
    chromlist <- c("Chr01","Chr02","Chr03","Chr04","Chr05","Chr06","Chr07","Chr08","Chr09","Chr10")
+   
 ::
 
 Functions
