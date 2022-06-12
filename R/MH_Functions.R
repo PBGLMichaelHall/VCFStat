@@ -1,4 +1,4 @@
-# Define global variables otherwise Build check will complain and make a note
+# Ok Define global variables otherwise Build check will complain and make a note
 globalVariables(c("MQM","AO","CHROM","DP","POS","QUAL","aes","facet_wrap","geom_density","geom_histogram","ggplot","nSNPs","theme_classic","%>%","rbindlist","read.vcfR","vcfR2tidy","countSNPs_cpp"))
 
 #' @importFrom dplyr %>% 
