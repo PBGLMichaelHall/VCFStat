@@ -4,7 +4,7 @@
 \alias{FacetChromQual}
 \title{FacetChromQual}
 \usage{
-FacetChromQual(vcf, chromlist = NULL, windowSize = NULL, ncol = NULL)
+FacetChromQual(vcf, chromlist = NULL, windowSize = NULL, ncol = NULL, bins = NULL)
 }
 \arguments{
 \item{vcf}{A vcf file please}
