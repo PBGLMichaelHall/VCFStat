@@ -304,6 +304,7 @@ ChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL){
 #' @param chromlist A vector specifying particular chromosomes
 #' @param windowSize Specify window size to calculate number of SNPs
 #' @param ncol An integer representing the number of Chromosomes in your set list
+#' @param bins Specify histogram bin width
 #' @export FacetChromnSNPs
 
 FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
@@ -326,9 +327,9 @@ FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   par(mfrow = c(1, 1))
   SNPset$nSNPs <- as.numeric(SNPset$nSNPs)
   jpeg(filename="plot9.jpeg")
-  ggplot(data = SNPset, aes(x = nSNPs)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  ggplot(data = SNPset, aes(x = nSNPs)) + geom_histogram(bins = bins, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   dev.off()
-  z<-  ggplot(data = SNPset, aes(x = nSNPs)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  z<-  ggplot(data = SNPset, aes(x = nSNPs)) + geom_histogram(bins = bins, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   print(z)
   
 }
@@ -340,6 +341,7 @@ FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
 #' @param chromlist A vector specifying particular chromosomes
 #' @param windowSize Specify window size to calculate number of SNPs
 #' @param ncol An integer representing the number of Chromosomes in your set list
+#' @param specify histogram bin width for a more accurate representation
 #' @export FacetChromQual
 
 FacetChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
@@ -361,9 +363,9 @@ FacetChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = QTLseqr::countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   jpeg(filename="plot10.jpeg")
-  ggplot(data = SNPset, aes(x = QUAL)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  ggplot(data = SNPset, aes(x = QUAL)) + geom_histogram(bins = bins, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   dev.off()
-  z<-  ggplot(data = SNPset, aes(x = QUAL)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  z<-  ggplot(data = SNPset, aes(x = QUAL)) + geom_histogram(bins = bins, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   print(z)
   
 }
@@ -374,6 +376,7 @@ FacetChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
 #' @param chromlist A vector specifying particular chromosomes
 #' @param windowSize Specify window size to calculate number of SNPs
 #' @param ncol An integer representing the number of Chromosomes in your set list
+#' @param specify histogram bin width for a more accurate representation
 #' @export FacetChromDP
 
 FacetChromDP <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
@@ -396,9 +399,9 @@ FacetChromDP <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   par(mfrow = c(1, 1))
   SNPset$DP <- as.numeric(SNPset$DP)
   jpeg(filename="plot11.jpeg")
-  ggplot(data = SNPset, aes(x = DP)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  ggplot(data = SNPset, aes(x = DP)) + geom_histogram(bins = bins, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   dev.off()
-  z<-  ggplot(data = SNPset, aes(x = DP)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  z<-  ggplot(data = SNPset, aes(x = DP)) + geom_histogram(bins = bins, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   print(z)
   
 }
