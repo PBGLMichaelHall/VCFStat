@@ -307,7 +307,7 @@ ChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL){
 #' @param bins Specify histogram bin width
 #' @export FacetChromnSNPs
 
-FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
+FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL,bins=NULL){
   vcf <- read.vcfR(file = vcf)
   vcf <- vcfR2tidy(vcf)
   SNPset <- vcf
@@ -344,7 +344,7 @@ FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
 #' @param bins specify histogram bin width for a more accurate representation
 #' @export FacetChromQual
 
-FacetChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
+FacetChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL,bins=NULL){
   vcf <- read.vcfR(file = vcf)
   vcf <- vcfR2tidy(vcf)
   SNPset <- vcf
@@ -379,7 +379,7 @@ FacetChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
 #' @param bins specify histogram bin width for a more accurate representation
 #' @export FacetChromDP
 
-FacetChromDP <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
+FacetChromDP <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL,bins=NULL){
   vcf <- read.vcfR(file = vcf)
   vcf <- vcfR2tidy(vcf)
   SNPset <- vcf
