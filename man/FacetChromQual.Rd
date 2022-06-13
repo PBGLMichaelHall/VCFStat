@@ -14,6 +14,8 @@ FacetChromQual(vcf, chromlist = NULL, windowSize = NULL, ncol = NULL)
 \item{windowSize}{Specify window size to calculate number of SNPs}
 
 \item{ncol}{An integer representing the number of Chromosomes in your set list}
+
+\item{bins}{Specify histogram width to have a better more accurate representation}
 }
 \description{
 FacetChromQual
