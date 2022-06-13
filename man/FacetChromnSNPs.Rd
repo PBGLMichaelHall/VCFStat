@@ -4,7 +4,7 @@
 \alias{FacetChromnSNPs}
 \title{FacetChromnSNPs}
 \usage{
-FacetChromnSNPs(vcf, chromlist = NULL, windowSize = NULL, ncol = NULL)
+FacetChromnSNPs(vcf, chromlist = NULL, windowSize = NULL, ncol = NULL, bins = NULL)
 }
 \arguments{
 \item{vcf}{A vcf file please}
@@ -14,6 +14,8 @@ FacetChromnSNPs(vcf, chromlist = NULL, windowSize = NULL, ncol = NULL)
 \item{windowSize}{Specify window size to calculate number of SNPs}
 
 \item{ncol}{An integer representing the number of Chromosomes in your set list}
+  
+\item{bins}{Specify bin width of histogram for a better more accurate representation}
 }
 \description{
 FacetChromnSNPs
