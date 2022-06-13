@@ -341,7 +341,7 @@ FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
 #' @param chromlist A vector specifying particular chromosomes
 #' @param windowSize Specify window size to calculate number of SNPs
 #' @param ncol An integer representing the number of Chromosomes in your set list
-#' @param specify histogram bin width for a more accurate representation
+#' @param bins specify histogram bin width for a more accurate representation
 #' @export FacetChromQual
 
 FacetChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
@@ -376,7 +376,7 @@ FacetChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
 #' @param chromlist A vector specifying particular chromosomes
 #' @param windowSize Specify window size to calculate number of SNPs
 #' @param ncol An integer representing the number of Chromosomes in your set list
-#' @param specify histogram bin width for a more accurate representation
+#' @param bins specify histogram bin width for a more accurate representation
 #' @export FacetChromDP
 
 FacetChromDP <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
