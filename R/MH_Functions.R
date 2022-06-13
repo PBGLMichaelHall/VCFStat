@@ -322,7 +322,7 @@ FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   message("Factoring Chromosome Variable According to Unique Specification")
   SNPset$CHROM <- factor(SNPset$CHROM, levels = gtools::mixedsort(unique(SNPset$CHROM)))
   message("Selecting Variable Subset")
-  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = QTLseqr::QTLseqr::countSNPs_cpp(POS = POS, windowSize = windowSize))
+  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = QTLseqr::countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   SNPset$nSNPs <- as.numeric(SNPset$nSNPs)
   jpeg(filename="plot9.jpeg")
