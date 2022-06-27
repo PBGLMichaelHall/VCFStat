@@ -1,5 +1,5 @@
-# Define global variables otherwise Build check will complain and make a note
-globalVariables(c("MQM","AO","CHROM","DP","POS","QUAL","aes","facet_wrap","geom_density","geom_histogram","ggplot","nSNPs","theme_classic","%>%","rbindlist","read.vcfR","vcfR2tidy","countSNPs_cpp"))
+# Ok Define global variables otherwise Build check will complain and make a note
+globalVariables(c("MQM","AO","CHROM","DP","POS","QUAL","aes","facet_wrap","geom_density","geom_histogram","ggplot","nSNPs","theme_classic","%>%","rbindlist","read.vcfR","vcfR2tidy","QTLseqr::countSNPs_cpp"))
 
 #' @importFrom dplyr %>% 
 #' @import graphics
@@ -16,31 +16,31 @@ globalVariables(c("MQM","AO","CHROM","DP","POS","QUAL","aes","facet_wrap","geom_
 #' @export ChromQual
 
 ChromQual <- function(vcf, chromlist=NULL,windowSize=NULL){
-vcf <- read.vcfR(file = vcf)
-vcf <- vcfR2tidy(vcf)
-SNPset <- vcf
-SNPset <- Map(as.data.frame, SNPset)
-SNPset <- rbindlist(SNPset, fill = TRUE)
-if (!is.null(chromlist)) {
-  message("Preparing Data for Quality Control Plotting and removing the following Chromosomes/Contigs: ", 
-          paste(unique(SNPset$CHROM)[!unique(SNPset$CHROM) %in% 
-                                       chromlist], collapse = ", "))
-  SNPset <- SNPset[SNPset$CHROM %in% chromlist, ]
-  message("Finishing Chromosome Subset")
-}
-message("Factoring Chromosome Variable According to Unique Specification")
-SNPset$CHROM <- factor(SNPset$CHROM, levels = gtools::mixedsort(unique(SNPset$CHROM)))
-message("Selecting Variable Subset")
-SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
-par(mfrow = c(1, 1))
-message("Making breaks Width")
-
-jpeg(filename="plot1.jpeg")
-message("Plotting histogram")
-hist(x = SNPset$QUAL, breaks = "sturges", col = "green", xlab ="Quality Quantities", main = "histogram of Quality Quantities")
-     dev.off()
-z <- hist(x = SNPset$QUAL, breaks = "sturges", col = "green", xlab = "Quality Quantities", main ="histogram of Quality Quantities")
-print(z)
+  vcf <- read.vcfR(file = vcf)
+  vcf <- vcfR2tidy(vcf)
+  SNPset <- vcf
+  SNPset <- Map(as.data.frame, SNPset)
+  SNPset <- rbindlist(SNPset, fill = TRUE)
+  if (!is.null(chromlist)) {
+    message("Preparing Data for Quality Control Plotting and removing the following Chromosomes/Contigs: ", 
+            paste(unique(SNPset$CHROM)[!unique(SNPset$CHROM) %in% 
+                                         chromlist], collapse = ", "))
+    SNPset <- SNPset[SNPset$CHROM %in% chromlist, ]
+    message("Finishing Chromosome Subset")
+  }
+  message("Factoring Chromosome Variable According to Unique Specification")
+  SNPset$CHROM <- factor(SNPset$CHROM, levels = gtools::mixedsort(unique(SNPset$CHROM)))
+  message("Selecting Variable Subset")
+  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = QTLseqr::countSNPs_cpp(POS = POS, windowSize = windowSize))
+  par(mfrow = c(1, 1))
+  message("Making breaks Width")
+  
+  jpeg(filename="plot1.jpeg")
+  message("Plotting histogram")
+  hist(x = SNPset$QUAL, breaks = "sturges", col = "green", xlab ="Quality Quantities", main = "histogram of Quality Quantities")
+  dev.off()
+  z <- hist(x = SNPset$QUAL, breaks = "sturges", col = "green", xlab = "Quality Quantities", main ="histogram of Quality Quantities")
+  print(z)
 }
 
 #' @title ChromDP
@@ -66,7 +66,7 @@ ChromDP <- function(vcf, chromlist=NULL,windowSize=NULL){
   message("Factoring Chromosome Variable According to Unique Specification")
   SNPset$CHROM <- factor(SNPset$CHROM, levels = gtools::mixedsort(unique(SNPset$CHROM)))
   message("Selecting Variable Subset")
-  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
+  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = QTLseqr::countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   message("Making breaks Width")
   jpeg(filename="plot2.jpeg")
@@ -102,7 +102,7 @@ ChromRO <- function(vcf, chromlist=NULL,windowSize=NULL){
   message("Factoring Chromosome Variable According to Unique Specification")
   SNPset$CHROM <- factor(SNPset$CHROM, levels = gtools::mixedsort(unique(SNPset$CHROM)))
   message("Selecting Variable Subset")
-  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
+  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = QTLseqr::countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   message("Making breaks Width")
   jpeg(filename="plot3.jpeg")
@@ -137,7 +137,7 @@ ChromAO <- function(vcf, chromlist=NULL,windowSize=NULL){
   message("Factoring Chromosome Variable According to Unique Specification")
   SNPset$CHROM <- factor(SNPset$CHROM, levels = gtools::mixedsort(unique(SNPset$CHROM)))
   message("Selecting Variable Subset")
-  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
+  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = QTLseqr::countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   message("Making breaks Width")
   SNPset$AO <- as.numeric(SNPset$AO)
@@ -173,7 +173,7 @@ ChromMQM <- function(vcf, chromlist=NULL,windowSize=NULL){
   message("Factoring Chromosome Variable According to Unique Specification")
   SNPset$CHROM <- factor(SNPset$CHROM, levels = gtools::mixedsort(unique(SNPset$CHROM)))
   message("Selecting Variable Subset")
-  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
+  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = QTLseqr::countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   message("Making breaks Width")
   SNPset$MQM <- as.numeric(SNPset$MQM)
@@ -209,7 +209,7 @@ ChromAC <- function(vcf, chromlist=NULL,windowSize=NULL){
   message("Factoring Chromosome Variable According to Unique Specification")
   SNPset$CHROM <- factor(SNPset$CHROM, levels = gtools::mixedsort(unique(SNPset$CHROM)))
   message("Selecting Variable Subset")
-  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
+  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = QTLseqr::countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   message("Making breaks Width")
   SNPset$AC <- as.factor(SNPset$AC)
@@ -221,7 +221,7 @@ ChromAC <- function(vcf, chromlist=NULL,windowSize=NULL){
   print(totals)
   z <- plot(SNPset$AC)
   print(z)
-
+  
 }
 
 #' @title ChromAN
@@ -247,7 +247,7 @@ ChromAN <- function(vcf, chromlist=NULL,windowSize=NULL){
   message("Factoring Chromosome Variable According to Unique Specification")
   SNPset$CHROM <- factor(SNPset$CHROM, levels = gtools::mixedsort(unique(SNPset$CHROM)))
   message("Selecting Variable Subset")
-  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
+  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = QTLseqr::countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   message("Making breaks Width")
   SNPset$AC <- as.factor(SNPset$AN)
@@ -285,7 +285,7 @@ ChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL){
   message("Factoring Chromosome Variable According to Unique Specification")
   SNPset$CHROM <- factor(SNPset$CHROM, levels = gtools::mixedsort(unique(SNPset$CHROM)))
   message("Selecting Variable Subset")
-  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
+  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = QTLseqr::countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   message("Making breaks Width")
   jpeg(filename="plot8.jpeg")
@@ -304,9 +304,10 @@ ChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL){
 #' @param chromlist A vector specifying particular chromosomes
 #' @param windowSize Specify window size to calculate number of SNPs
 #' @param ncol An integer representing the number of Chromosomes in your set list
+#' @param bins Specify histogram bin width
 #' @export FacetChromnSNPs
 
-FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
+FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL,bins=NULL){
   vcf <- read.vcfR(file = vcf)
   vcf <- vcfR2tidy(vcf)
   SNPset <- vcf
@@ -322,13 +323,13 @@ FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   message("Factoring Chromosome Variable According to Unique Specification")
   SNPset$CHROM <- factor(SNPset$CHROM, levels = gtools::mixedsort(unique(SNPset$CHROM)))
   message("Selecting Variable Subset")
-  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
+  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = QTLseqr::countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   SNPset$nSNPs <- as.numeric(SNPset$nSNPs)
   jpeg(filename="plot9.jpeg")
-  ggplot(data = SNPset, aes(x = nSNPs)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  ggplot(data = SNPset, aes(x = nSNPs)) + geom_histogram(bins = bins, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   dev.off()
-  z<-  ggplot(data = SNPset, aes(x = nSNPs)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  z<-  ggplot(data = SNPset, aes(x = nSNPs)) + geom_histogram(bins = bins, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   print(z)
   
 }
@@ -340,9 +341,10 @@ FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
 #' @param chromlist A vector specifying particular chromosomes
 #' @param windowSize Specify window size to calculate number of SNPs
 #' @param ncol An integer representing the number of Chromosomes in your set list
+#' @param bins specify histogram bin width for a more accurate representation
 #' @export FacetChromQual
 
-FacetChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
+FacetChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL,bins=NULL){
   vcf <- read.vcfR(file = vcf)
   vcf <- vcfR2tidy(vcf)
   SNPset <- vcf
@@ -358,12 +360,12 @@ FacetChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   message("Factoring Chromosome Variable According to Unique Specification")
   SNPset$CHROM <- factor(SNPset$CHROM, levels = gtools::mixedsort(unique(SNPset$CHROM)))
   message("Selecting Variable Subset")
-  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
+  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = QTLseqr::countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   jpeg(filename="plot10.jpeg")
-  ggplot(data = SNPset, aes(x = QUAL)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  ggplot(data = SNPset, aes(x = QUAL)) + geom_histogram(bins = bins, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   dev.off()
-  z<-  ggplot(data = SNPset, aes(x = QUAL)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  z<-  ggplot(data = SNPset, aes(x = QUAL)) + geom_histogram(bins = bins, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   print(z)
   
 }
@@ -374,9 +376,10 @@ FacetChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
 #' @param chromlist A vector specifying particular chromosomes
 #' @param windowSize Specify window size to calculate number of SNPs
 #' @param ncol An integer representing the number of Chromosomes in your set list
+#' @param bins specify histogram bin width for a more accurate representation
 #' @export FacetChromDP
 
-FacetChromDP <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
+FacetChromDP <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL,bins=NULL){
   vcf <- read.vcfR(file = vcf)
   vcf <- vcfR2tidy(vcf)
   SNPset <- vcf
@@ -392,13 +395,13 @@ FacetChromDP <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   message("Factoring Chromosome Variable According to Unique Specification")
   SNPset$CHROM <- factor(SNPset$CHROM, levels = gtools::mixedsort(unique(SNPset$CHROM)))
   message("Selecting Variable Subset")
-  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
+  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = QTLseqr::countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   SNPset$DP <- as.numeric(SNPset$DP)
   jpeg(filename="plot11.jpeg")
-  ggplot(data = SNPset, aes(x = DP)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  ggplot(data = SNPset, aes(x = DP)) + geom_histogram(bins = bins, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   dev.off()
-  z<-  ggplot(data = SNPset, aes(x = DP)) + geom_histogram(bins = 10, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
+  z<-  ggplot(data = SNPset, aes(x = DP)) + geom_histogram(bins = bins, show.legend = TRUE) + facet_wrap(~CHROM, ncol = ncol) + theme_classic()
   print(z)
   
 }
@@ -426,7 +429,7 @@ FacetChromAO <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   message("Factoring Chromosome Variable According to Unique Specification")
   SNPset$CHROM <- factor(SNPset$CHROM, levels = gtools::mixedsort(unique(SNPset$CHROM)))
   message("Selecting Variable Subset")
-  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = countSNPs_cpp(POS = POS, windowSize = windowSize))
+  SNPset <- SNPset %>% dplyr::group_by(CHROM) %>% dplyr::mutate(nSNPs = QTLseqr::countSNPs_cpp(POS = POS, windowSize = windowSize))
   par(mfrow = c(1, 1))
   SNPset$AO <- as.numeric(SNPset$AO)
   jpeg(filename="plot9.jpeg")
@@ -441,6 +444,7 @@ FacetChromAO <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   print(z1)
   
 }
+<<<<<<< HEAD
 #' @title Correlation
 #' @description Returns a Correlation Matrix for info fields AC, DP, DPB, QA, RO, AO and most importantly QUAL
 #' @param vcffile A vcf file
@@ -520,3 +524,5 @@ Correlation <-
   }
 
 
+=======
+>>>>>>> b370bc9853ff95ae565a66c0a8f3330a8173c09c

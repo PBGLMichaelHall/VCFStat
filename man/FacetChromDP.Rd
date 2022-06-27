@@ -4,7 +4,7 @@
 \alias{FacetChromDP}
 \title{FacetChromDP}
 \usage{
-FacetChromDP(vcf, chromlist = NULL, windowSize = NULL, ncol = NULL)
+FacetChromDP(vcf, chromlist = NULL, windowSize = NULL, ncol = NULL, bins = NULL)
 }
 \arguments{
 \item{vcf}{A vcf file please}
@@ -14,6 +14,8 @@ FacetChromDP(vcf, chromlist = NULL, windowSize = NULL, ncol = NULL)
 \item{windowSize}{Specify window size to calculate number of SNPs}
 
 \item{ncol}{An integer representing the number of Chromosomes in your set list}
+  
+\item{bins}{Specify bin width of histogram having a better more accurate representation}
 }
 \description{
 FacetChromDP

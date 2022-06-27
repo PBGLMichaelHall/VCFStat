@@ -54,6 +54,11 @@ Load/install libraries
 
    devtools::install_github("PBGLMichaelHall/VCFstat",force = TRUE)   
    library(VCFstat)
+   library(vcfR)
+   library(data.table)
+   library(QTLseqr)
+   library(ggplot2)
+
    
    # Check to see if all dependent packages are loaded.
    sessionInfo()
