@@ -16,8 +16,8 @@ globalVariables(c("MQM","AO","CHROM","DP","POS","QUAL","aes","facet_wrap","geom_
 #' @export ChromQual
 
 ChromQual <- function(vcf, chromlist=NULL,windowSize=NULL){
-  vcf <- read.vcfR(file = vcf)
-  vcf <- vcfR2tidy(vcf)
+  vcf <- vcfR::read.vcfR(file = vcf)
+  vcf <- vcfR::vcfR2tidy(vcf)
   SNPset <- vcf
   SNPset <- Map(as.data.frame, SNPset)
   SNPset <- rbindlist(SNPset, fill = TRUE)
@@ -51,8 +51,8 @@ ChromQual <- function(vcf, chromlist=NULL,windowSize=NULL){
 #' @export ChromDP
 
 ChromDP <- function(vcf, chromlist=NULL,windowSize=NULL){
-  vcf <- read.vcfR(file = vcf)
-  vcf <- vcfR2tidy(vcf)
+  vcf <- vcfR::read.vcfR(file = vcf)
+  vcf <- vcfR::vcfR2tidy(vcf)
   SNPset <- vcf
   SNPset <- Map(as.data.frame, SNPset)
   SNPset <- rbindlist(SNPset, fill = TRUE)
@@ -87,8 +87,8 @@ ChromDP <- function(vcf, chromlist=NULL,windowSize=NULL){
 #' @export ChromRO
 
 ChromRO <- function(vcf, chromlist=NULL,windowSize=NULL){
-  vcf <- read.vcfR(file = vcf)
-  vcf <- vcfR2tidy(vcf)
+  vcf <- vcfR::read.vcfR(file = vcf)
+  vcf <- vcfR::vcfR2tidy(vcf)
   SNPset <- vcf
   SNPset <- Map(as.data.frame, SNPset)
   SNPset <- rbindlist(SNPset, fill = TRUE)
@@ -122,8 +122,8 @@ ChromRO <- function(vcf, chromlist=NULL,windowSize=NULL){
 #' @export ChromAO
 
 ChromAO <- function(vcf, chromlist=NULL,windowSize=NULL){
-  vcf <- read.vcfR(file = vcf)
-  vcf <- vcfR2tidy(vcf)
+  vcf <- vcfR::read.vcfR(file = vcf)
+  vcf <- vcfR::vcfR2tidy(vcf)
   SNPset <- vcf
   SNPset <- Map(as.data.frame, SNPset)
   SNPset <- rbindlist(SNPset, fill = TRUE)
@@ -158,8 +158,8 @@ ChromAO <- function(vcf, chromlist=NULL,windowSize=NULL){
 #' @export ChromMQM
 
 ChromMQM <- function(vcf, chromlist=NULL,windowSize=NULL){
-  vcf <- read.vcfR(file = vcf)
-  vcf <- vcfR2tidy(vcf)
+  vcf <- vcfR::read.vcfR(file = vcf)
+  vcf <- vcfR::vcfR2tidy(vcf)
   SNPset <- vcf
   SNPset <- Map(as.data.frame, SNPset)
   SNPset <- rbindlist(SNPset, fill = TRUE)
@@ -194,8 +194,8 @@ ChromMQM <- function(vcf, chromlist=NULL,windowSize=NULL){
 #' @export ChromAC
 
 ChromAC <- function(vcf, chromlist=NULL,windowSize=NULL){
-  vcf <- read.vcfR(file = vcf)
-  vcf <- vcfR2tidy(vcf)
+  vcf <- vcfR::read.vcfR(file = vcf)
+  vcf <- vcfR::vcfR2tidy(vcf)
   SNPset <- vcf
   SNPset <- Map(as.data.frame, SNPset)
   SNPset <- rbindlist(SNPset, fill = TRUE)
@@ -232,8 +232,8 @@ ChromAC <- function(vcf, chromlist=NULL,windowSize=NULL){
 #' @export ChromAN
 
 ChromAN <- function(vcf, chromlist=NULL,windowSize=NULL){
-  vcf <- read.vcfR(file = vcf)
-  vcf <- vcfR2tidy(vcf)
+  vcf <- vcfR::read.vcfR(file = vcf)
+  vcf <- vcfR::vcfR2tidy(vcf)
   SNPset <- vcf
   SNPset <- Map(as.data.frame, SNPset)
   SNPset <- rbindlist(SNPset, fill = TRUE)
@@ -270,8 +270,8 @@ ChromAN <- function(vcf, chromlist=NULL,windowSize=NULL){
 #' @export ChromnSNPs
 
 ChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL){
-  vcf <- read.vcfR(file = vcf)
-  vcf <- vcfR2tidy(vcf)
+  vcf <- vcfR::read.vcfR(file = vcf)
+  vcf <- vcfR::vcfR2tidy(vcf)
   SNPset <- vcf
   SNPset <- Map(as.data.frame, SNPset)
   SNPset <- rbindlist(SNPset, fill = TRUE)
@@ -308,8 +308,8 @@ ChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL){
 #' @export FacetChromnSNPs
 
 FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL,bins=NULL){
-  vcf <- read.vcfR(file = vcf)
-  vcf <- vcfR2tidy(vcf)
+  vcf <- vcfR::read.vcfR(file = vcf)
+  vcf <- vcfR::vcfR2tidy(vcf)
   SNPset <- vcf
   SNPset <- Map(as.data.frame, SNPset)
   SNPset <- rbindlist(SNPset, fill = TRUE)
@@ -345,8 +345,8 @@ FacetChromnSNPs <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL,bins=N
 #' @export FacetChromQual
 
 FacetChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL,bins=NULL){
-  vcf <- read.vcfR(file = vcf)
-  vcf <- vcfR2tidy(vcf)
+  vcf <- vcfR::read.vcfR(file = vcf)
+  vcf <- vcfR::vcfR2tidy(vcf)
   SNPset <- vcf
   SNPset <- Map(as.data.frame, SNPset)
   SNPset <- rbindlist(SNPset, fill = TRUE)
@@ -380,8 +380,8 @@ FacetChromQual <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL,bins=NU
 #' @export FacetChromDP
 
 FacetChromDP <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL,bins=NULL){
-  vcf <- read.vcfR(file = vcf)
-  vcf <- vcfR2tidy(vcf)
+  vcf <- vcfR::read.vcfR(file = vcf)
+  vcf <- vcfR::vcfR2tidy(vcf)
   SNPset <- vcf
   SNPset <- Map(as.data.frame, SNPset)
   SNPset <- rbindlist(SNPset, fill = TRUE)
@@ -414,8 +414,8 @@ FacetChromDP <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL,bins=NULL
 #' @export FacetChromAO
 
 FacetChromAO <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
-  vcf <- read.vcfR(file = vcf)
-  vcf <- vcfR2tidy(vcf)
+  vcf <- vcfR::read.vcfR(file = vcf)
+  vcf <- vcfR::vcfR2tidy(vcf)
   SNPset <- vcf
   SNPset <- Map(as.data.frame, SNPset)
   SNPset <- rbindlist(SNPset, fill = TRUE)
