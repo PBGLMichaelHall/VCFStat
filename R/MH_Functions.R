@@ -444,7 +444,7 @@ FacetChromAO <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
   print(z1)
   
 }
-<<<<<<< HEAD
+
 #' @title Correlation
 #' @description Returns a Correlation Matrix for info fields AC, DP, DPB, QA, RO, AO and most importantly QUAL
 #' @param vcffile A vcf file
@@ -460,8 +460,8 @@ FacetChromAO <- function(vcf, chromlist=NULL,windowSize=NULL,ncol=NULL){
 Correlation <-
   function (vcffile = NULL, chromlist = NULL,p1 = NULL, p2 = NULL, p3 = NULL, p4 = NULL,p5=TRUE)
   {
-    vcf <- read.vcfR(file = vcffile)
-    vcf <- vcfR2tidy(vcf)
+    vcf <- vcfR::read.vcfR(file = vcffile)
+    vcf <- vcfR::vcfR2tidy(vcf)
     message("Extracting unique Chromosome or Contig names reverse compatible to VCF file")
     print(unique(vcf$fix$CHROM))
     SNPset <- vcf
